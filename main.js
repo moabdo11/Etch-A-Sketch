@@ -1,6 +1,6 @@
 
 const container = document.querySelector('#container');
-
+const square = document.querySelector('.square');
 
 
 function createGrid(size) {
@@ -11,12 +11,38 @@ for (let i = 0; i < size; i++) {
     container.appendChild(square);
     }
   }
-  $(".square").width(960 / size);
-  $(".square").height(960 / size);
+  $(".square").width(500 / size);
+  $(".square").height(500 / size);
 }
 
+function clearGrid() {
+  $(".square").remove();
+};
 
-createGrid(10);
+function resetGrid () {
+  let x = prompt("What size grid would you like? Please enter a number");
+  clearGrid();
+  createGrid(x);
+}
+
+$(document).ready(function () {
+  createGrid(16);
+
+  $(".square").mouseover(function () {
+    $(this).css("background-color", "black");
+  });
+
+
+  $("#refresh-grid").click(function () {
+    resetGrid();
+
+    $(".square").mouseover(function () {
+      $(this).css("background-color", "black");
+    });
+  });
+});
+
+
 
 
 
